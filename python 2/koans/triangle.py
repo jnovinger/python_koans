@@ -17,8 +17,20 @@
 #   about_triangle_project_2.py
 #
 def triangle(a, b, c):
-    # DELETE 'PASS' AND WRITE THIS CODE
-    pass
+
+    # check for impossible triangles and raise TriangleError
+    if a < 1 or b < 1 or c < 1:
+        raise TriangleError
+    if a + b <= c or a + c <= b or b + c <= a:
+        raise TriangleError
+
+    # now, figure out which kind of triangle it is
+    if a == b == c:
+        return 'equilateral'
+    if a == b or b == c or c == a:
+        return 'isosceles'
+    else:
+        return 'scalene'
 
 # Error class used in part 2.  No need to change this code.
 class TriangleError(StandardError):
